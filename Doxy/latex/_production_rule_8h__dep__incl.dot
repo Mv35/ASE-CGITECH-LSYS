@@ -1,0 +1,30 @@
+digraph "/Users/milovolpicelli/Desktop/ASE/L-Sys/include/ProductionRule.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/ProductionRule.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSysStruct.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys_struct_8h_source.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSys.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys_8h.html",tooltip="L-system abstract class to be inherited by L-systems D0L, D1L, D2L, 0L, 1L, 2L. "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSys0L.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys0_l_8h_source.html"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/NGLWidget.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_n_g_l_widget_8h_source.html"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/MainWindow.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_main_window_8h_source.html"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSysExtFactory.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys_ext_factory_8h_source.html"];
+  Node7 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSysParser.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys_parser_8h.html",tooltip="a parser to parse the LSysStruct parameters hold in a file and stores them into a LSysStructForFile s..."];
+  Node8 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="/Users/milovolpicelli\l/Desktop/ASE/L-Sys/include\l/LSysStructForFile.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_l_sys_struct_for_file_8h.html",tooltip="LSys data structure needed to store LSysStruct elements in order to print the element&#39;s values to a t..."];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

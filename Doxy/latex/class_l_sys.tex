@@ -1,0 +1,69 @@
+\hypertarget{class_l_sys}{}\section{L\+Sys Class Reference}
+\label{class_l_sys}\index{L\+Sys@{L\+Sys}}
+
+
+Inheritance diagram for L\+Sys\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_sys_aba12f0e5f186bc7db9ec4a6006d9cc37}\label{class_l_sys_aba12f0e5f186bc7db9ec4a6006d9cc37}} 
+std\+::string \hyperlink{class_l_sys_aba12f0e5f186bc7db9ec4a6006d9cc37}{get\+Axiom} () const
+\begin{DoxyCompactList}\small\item\em Accessors methods. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_a62c17b62882891989d704cecefb8c4d9}\label{class_l_sys_a62c17b62882891989d704cecefb8c4d9}} 
+std\+::vector$<$ \hyperlink{struct_production_rule}{Production\+Rule} $>$ {\bfseries get\+Prules} () const
+\item 
+\mbox{\Hypertarget{class_l_sys_a1983f18c67516162ede5a8de4015adfe}\label{class_l_sys_a1983f18c67516162ede5a8de4015adfe}} 
+void \hyperlink{class_l_sys_a1983f18c67516162ede5a8de4015adfe}{set\+Axiom} (const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Mutators methods. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_a4d01a459e63b0885c2b731360d189f49}\label{class_l_sys_a4d01a459e63b0885c2b731360d189f49}} 
+void {\bfseries set\+Prules} (const std\+::vector$<$ \hyperlink{struct_production_rule}{Production\+Rule} $>$ \&)
+\item 
+\mbox{\Hypertarget{class_l_sys_a3a3f29320097227580b5f6ccbe68d839}\label{class_l_sys_a3a3f29320097227580b5f6ccbe68d839}} 
+void {\bfseries add\+Prule} (std\+::string pre, std\+::string key, std\+::string post, std\+::string def, float weight)
+\item 
+\mbox{\Hypertarget{class_l_sys_a3ad596419325259a7d83bf0da45573e8}\label{class_l_sys_a3ad596419325259a7d83bf0da45573e8}} 
+std\+::unordered\+\_\+map$<$ std\+::string, float $>$ {\bfseries definitions\+Normalization} (std\+::unordered\+\_\+map$<$ std\+::string, float $>$ def)
+\item 
+\mbox{\Hypertarget{class_l_sys_aa584da0586fff850dcffabb19b49f036}\label{class_l_sys_aa584da0586fff850dcffabb19b49f036}} 
+void {\bfseries remove\+P\+Ruleon\+Key} (std\+::string key)
+\item 
+\mbox{\Hypertarget{class_l_sys_adefa8538026807203b908b8c330572c7}\label{class_l_sys_adefa8538026807203b908b8c330572c7}} 
+void {\bfseries rm\+P\+Rule\+Definitionon\+Key} (std\+::string key, std\+::string def)
+\item 
+\mbox{\Hypertarget{class_l_sys_a9b0262453eb22c667bba6266bd646b3c}\label{class_l_sys_a9b0262453eb22c667bba6266bd646b3c}} 
+void {\bfseries print} ()
+\item 
+\mbox{\Hypertarget{class_l_sys_a5d8a3b562c02e7a1ca8afd9a9c7da50f}\label{class_l_sys_a5d8a3b562c02e7a1ca8afd9a9c7da50f}} 
+void {\bfseries Tofile} (const char $\ast$file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_l_sys_a6e5f0d6a695c702b1d0d12802fddacf8}\label{class_l_sys_a6e5f0d6a695c702b1d0d12802fddacf8}} 
+virtual std\+::vector$<$ std\+::string $>$ {\bfseries develop} (int iterations, std\+::vector$<$ std\+::string $>$ \&out\+\_\+results, bool all\+\_\+stages)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_sys_a47cedddf1400255ec6f20f36af55417e}\label{class_l_sys_a47cedddf1400255ec6f20f36af55417e}} 
+std\+::string \hyperlink{class_l_sys_a47cedddf1400255ec6f20f36af55417e}{m\+\_\+axiom}
+\begin{DoxyCompactList}\small\item\em axiom \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_a49fbe67a18ad078c756886d99e6ac072}\label{class_l_sys_a49fbe67a18ad078c756886d99e6ac072}} 
+int \hyperlink{class_l_sys_a49fbe67a18ad078c756886d99e6ac072}{m\+\_\+angle}
+\begin{DoxyCompactList}\small\item\em angle \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_a26c41bcfbabe1646e9b9579b451153ec}\label{class_l_sys_a26c41bcfbabe1646e9b9579b451153ec}} 
+int \hyperlink{class_l_sys_a26c41bcfbabe1646e9b9579b451153ec}{m\+\_\+iterations}
+\begin{DoxyCompactList}\small\item\em iterations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_ad55ee78715ae84525c69fe34ffc88fd1}\label{class_l_sys_ad55ee78715ae84525c69fe34ffc88fd1}} 
+double \hyperlink{class_l_sys_ad55ee78715ae84525c69fe34ffc88fd1}{m\+\_\+scale}
+\begin{DoxyCompactList}\small\item\em scale \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_a77ae6ac68fcb2f4a56d9892b1e22ca76}\label{class_l_sys_a77ae6ac68fcb2f4a56d9892b1e22ca76}} 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_l_sys_a77ae6ac68fcb2f4a56d9892b1e22ca76}{m\+\_\+constants}
+\begin{DoxyCompactList}\small\item\em vector of constants for string replecement only \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_sys_ac46e8fc62927a3323cd0ba5a3033964c}\label{class_l_sys_ac46e8fc62927a3323cd0ba5a3033964c}} 
+std\+::vector$<$ \hyperlink{struct_production_rule}{Production\+Rule} $>$ \hyperlink{class_l_sys_ac46e8fc62927a3323cd0ba5a3033964c}{m\+\_\+\+Prules}
+\begin{DoxyCompactList}\small\item\em Production rules vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/milovolpicelli/\+Desktop/\+A\+S\+E/\+L-\/\+Sys/include/\hyperlink{_l_sys_8h}{L\+Sys.\+h}\item 
+/\+Users/milovolpicelli/\+Desktop/\+A\+S\+E/\+L-\/\+Sys/src/L\+Sys.\+cpp\end{DoxyCompactItemize}

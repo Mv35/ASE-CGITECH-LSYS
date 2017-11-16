@@ -1,0 +1,13 @@
+digraph "/Users/milovolpicelli" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d522931ffa1371640980b621734a4381 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Users" fontname="Helvetica", fontsize="10", URL="dir_d522931ffa1371640980b621734a4381.html"]
+  subgraph clusterdir_b5ae07536fff603cc858854972b99ddb {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_b5ae07536fff603cc858854972b99ddb.html"];
+    dir_b5ae07536fff603cc858854972b99ddb [shape=plaintext label="milovolpicelli"];
+    dir_2b7dece7b1f1090b08f698db9a409518 [shape=box label="Desktop" color="red" fillcolor="white" style="filled" URL="dir_2b7dece7b1f1090b08f698db9a409518.html"];
+  }
+  }
+}

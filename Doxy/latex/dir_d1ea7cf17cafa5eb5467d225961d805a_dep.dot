@@ -1,0 +1,16 @@
+digraph "/Users/milovolpicelli/Desktop/ASE/L-Sys" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_dab4d9969e6e69f5dbbb4260d6d75c70 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="ASE" fontname="Helvetica", fontsize="10", URL="dir_dab4d9969e6e69f5dbbb4260d6d75c70.html"]
+  subgraph clusterdir_d1ea7cf17cafa5eb5467d225961d805a {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d1ea7cf17cafa5eb5467d225961d805a.html"];
+    dir_d1ea7cf17cafa5eb5467d225961d805a [shape=plaintext label="L-Sys"];
+    dir_b7de8fde0a6c23bfedd99cf00e8c0fd2 [shape=box label="include" color="black" fillcolor="white" style="filled" URL="dir_b7de8fde0a6c23bfedd99cf00e8c0fd2.html"];
+    dir_5a7e7c0b2ab1b180ac3959e44446a3e9 [shape=box label="moc" color="black" fillcolor="white" style="filled" URL="dir_5a7e7c0b2ab1b180ac3959e44446a3e9.html"];
+    dir_91d050f0075fd7758bc1eb14ce3e83da [shape=box label="src" color="black" fillcolor="white" style="filled" URL="dir_91d050f0075fd7758bc1eb14ce3e83da.html"];
+  }
+  }
+  dir_91d050f0075fd7758bc1eb14ce3e83da->dir_b7de8fde0a6c23bfedd99cf00e8c0fd2 [headlabel="10", labeldistance=1.5 headhref="dir_000006_000005.html"];
+}

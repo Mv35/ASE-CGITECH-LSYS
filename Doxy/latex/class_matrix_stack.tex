@@ -1,0 +1,214 @@
+\hypertarget{class_matrix_stack}{}\section{Matrix\+Stack Class Reference}
+\label{class_matrix_stack}\index{Matrix\+Stack@{Matrix\+Stack}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_matrix_stack_a3244319384a8d7af077670f69d8d9e6e}{Matrix\+Stack} ()
+\begin{DoxyCompactList}\small\item\em ctor can set depth \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_matrix_stack_a8dc92deca8176112d54ed36427396134}\label{class_matrix_stack_a8dc92deca8176112d54ed36427396134}} 
+void \hyperlink{class_matrix_stack_a8dc92deca8176112d54ed36427396134}{push\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em push the current value of top onto the stack \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_matrix_stack_ae65f661d4e59e973443b640e6a99c665}\label{class_matrix_stack_ae65f661d4e59e973443b640e6a99c665}} 
+void \hyperlink{class_matrix_stack_ae65f661d4e59e973443b640e6a99c665}{pop\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em pop the current top of stack and replace with last \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_matrix_stack_ac4e12970dc545ebd05d92c1347e11714}\label{class_matrix_stack_ac4e12970dc545ebd05d92c1347e11714}} 
+void \hyperlink{class_matrix_stack_ac4e12970dc545ebd05d92c1347e11714}{identity} ()
+\begin{DoxyCompactList}\small\item\em similar to gl\+Identity() will reset top of stack (but not view) \end{DoxyCompactList}\item 
+ngl\+::\+Mat4 \hyperlink{class_matrix_stack_ac1499f970a31ed52adc284143f5d6c72}{top} () const
+\begin{DoxyCompactList}\small\item\em return the matrix at the top of the stack \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_a2686805de00a5db1749f4299bb01c545}{set\+View} (const ngl\+::\+Mat4 \&\+\_\+v)
+\begin{DoxyCompactList}\small\item\em set the view matrix which will be post multiplied by current model and project matrix \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_a14ca718786e859f9b4a800b1d39e8d78}{set\+Projection} (const ngl\+::\+Mat4 \&\+\_\+p)
+\begin{DoxyCompactList}\small\item\em set the projection matrix which will be post multiplied by current model and model matrix \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_a34384d88ffcb499b5a76d3b8b964ba77}{rotate} (float \+\_\+x, float \+\_\+y, float \+\_\+z)
+\begin{DoxyCompactList}\small\item\em create a rotation using x,y,z rolls \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_acb15ed3386503e6c659c2e74bdee0b77}{rotate} (float \+\_\+angle, float \+\_\+x, float \+\_\+y, float \+\_\+z)
+\begin{DoxyCompactList}\small\item\em axis angle rotation like gl\+Rotate \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_a9bf604cc132a1d11608a5cb76cc878d9}{translate} (float \+\_\+x, float \+\_\+y, float \+\_\+z)
+\begin{DoxyCompactList}\small\item\em translate similar to gl\+Translate \end{DoxyCompactList}\item 
+void \hyperlink{class_matrix_stack_a45d2004459f15ec2c668142843eed887}{scale} (float \+\_\+x, float \+\_\+y, float \+\_\+z)
+\begin{DoxyCompactList}\small\item\em scale similar to gl\+Scale a uniform scale around the origin \end{DoxyCompactList}\item 
+ngl\+::\+Mat4 \hyperlink{class_matrix_stack_ac42d10e96245541da10045d2e6824fd2}{M\+VP} () const
+\begin{DoxyCompactList}\small\item\em get the Model View Project matrix \end{DoxyCompactList}\item 
+ngl\+::\+Mat4 \hyperlink{class_matrix_stack_a603053372fd07bef6bf7dfac3fc391c1}{MV} () const
+\begin{DoxyCompactList}\small\item\em get the Model View matrix \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_matrix_stack_a3244319384a8d7af077670f69d8d9e6e}\label{class_matrix_stack_a3244319384a8d7af077670f69d8d9e6e}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!Matrix\+Stack@{Matrix\+Stack}}
+\index{Matrix\+Stack@{Matrix\+Stack}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{Matrix\+Stack()}{MatrixStack()}}
+{\footnotesize\ttfamily Matrix\+Stack\+::\+Matrix\+Stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ctor can set depth 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+depth} & stack size default 40 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_matrix_stack_a603053372fd07bef6bf7dfac3fc391c1}\label{class_matrix_stack_a603053372fd07bef6bf7dfac3fc391c1}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!MV@{MV}}
+\index{MV@{MV}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{M\+V()}{MV()}}
+{\footnotesize\ttfamily ngl\+::\+Mat4 Matrix\+Stack\+::\+MV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the Model View matrix 
+
+\begin{DoxyReturn}{Returns}
+the MV matrix product 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_stack_ac42d10e96245541da10045d2e6824fd2}\label{class_matrix_stack_ac42d10e96245541da10045d2e6824fd2}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!M\+VP@{M\+VP}}
+\index{M\+VP@{M\+VP}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{M\+V\+P()}{MVP()}}
+{\footnotesize\ttfamily ngl\+::\+Mat4 Matrix\+Stack\+::\+M\+VP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the Model View Project matrix 
+
+\begin{DoxyReturn}{Returns}
+the M\+VP matrix product 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_stack_a34384d88ffcb499b5a76d3b8b964ba77}\label{class_matrix_stack_a34384d88ffcb499b5a76d3b8b964ba77}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!rotate@{rotate}}
+\index{rotate@{rotate}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::rotate (\begin{DoxyParamCaption}\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+y,  }\item[{float}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+create a rotation using x,y,z rolls 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & the x rotation in degrees \\
+\hline
+{\em \+\_\+y} & the x rotation in degrees \\
+\hline
+{\em \+\_\+z} & the x rotation in degrees \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+this is done as follows ngl\+::\+Mat4 final=z$\ast$y$\ast$x; where each is a rotation matrix 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_matrix_stack_acb15ed3386503e6c659c2e74bdee0b77}\label{class_matrix_stack_acb15ed3386503e6c659c2e74bdee0b77}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!rotate@{rotate}}
+\index{rotate@{rotate}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::rotate (\begin{DoxyParamCaption}\item[{float}]{\+\_\+angle,  }\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+y,  }\item[{float}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+axis angle rotation like gl\+Rotate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+angle} & the angle of rotation in degrees \\
+\hline
+{\em \+\_\+x} & axis value \\
+\hline
+{\em \+\_\+y} & axis value \\
+\hline
+{\em \+\_\+z} & axis value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+this works like gl\+Rotate so we could do rotate(45,0,1,0) to rotate 45 degrees in the Y 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_matrix_stack_a45d2004459f15ec2c668142843eed887}\label{class_matrix_stack_a45d2004459f15ec2c668142843eed887}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!scale@{scale}}
+\index{scale@{scale}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::scale (\begin{DoxyParamCaption}\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+y,  }\item[{float}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+scale similar to gl\+Scale a uniform scale around the origin 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & the x scale \\
+\hline
+{\em \+\_\+y} & the x scale \\
+\hline
+{\em \+\_\+z} & the x scale \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_stack_a14ca718786e859f9b4a800b1d39e8d78}\label{class_matrix_stack_a14ca718786e859f9b4a800b1d39e8d78}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!set\+Projection@{set\+Projection}}
+\index{set\+Projection@{set\+Projection}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{set\+Projection()}{setProjection()}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::set\+Projection (\begin{DoxyParamCaption}\item[{const ngl\+::\+Mat4 \&}]{\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set the projection matrix which will be post multiplied by current model and model matrix 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+v} & the view projection matrix to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_stack_a2686805de00a5db1749f4299bb01c545}\label{class_matrix_stack_a2686805de00a5db1749f4299bb01c545}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!set\+View@{set\+View}}
+\index{set\+View@{set\+View}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{set\+View()}{setView()}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::set\+View (\begin{DoxyParamCaption}\item[{const ngl\+::\+Mat4 \&}]{\+\_\+v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set the view matrix which will be post multiplied by current model and project matrix 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+v} & the view matrix to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_stack_ac1499f970a31ed52adc284143f5d6c72}\label{class_matrix_stack_ac1499f970a31ed52adc284143f5d6c72}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!top@{top}}
+\index{top@{top}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily ngl\+::\+Mat4 Matrix\+Stack\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+return the matrix at the top of the stack 
+
+\begin{DoxyReturn}{Returns}
+ngl\+::\+Mat4 the current top of stack model transform 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_stack_a9bf604cc132a1d11608a5cb76cc878d9}\label{class_matrix_stack_a9bf604cc132a1d11608a5cb76cc878d9}} 
+\index{Matrix\+Stack@{Matrix\+Stack}!translate@{translate}}
+\index{translate@{translate}!Matrix\+Stack@{Matrix\+Stack}}
+\subsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Matrix\+Stack\+::translate (\begin{DoxyParamCaption}\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+y,  }\item[{float}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+translate similar to gl\+Translate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & the x translation \\
+\hline
+{\em \+\_\+y} & the x translation \\
+\hline
+{\em \+\_\+z} & the x translation \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/milovolpicelli/\+Desktop/\+A\+S\+E/\+L-\/\+Sys/include/Matrix\+Stack.\+h\item 
+/\+Users/milovolpicelli/\+Desktop/\+A\+S\+E/\+L-\/\+Sys/include/Matrix\+Stack.\+cpp\end{DoxyCompactItemize}
