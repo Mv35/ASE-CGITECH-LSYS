@@ -1,0 +1,19 @@
+axiom:
+F ;
+
+angle:
+30 ;
+
+iterations:
+3 ;
+
+scale:
+0.01 ;
+
+constants:
+;
+
+Prules:
+F (0.5) F-F ;
+F (0.5) F+[+F]F ;
+
