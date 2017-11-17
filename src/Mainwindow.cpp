@@ -6,9 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), m_ui(new Ui::MainW
 {
   m_ui->setupUi(this);
   // create an openGL format and pass to the new GLWidget
-  QGLFormat format;
-  format.setVersion(3,2);
-  format.setProfile( QGLFormat::CoreProfile);
+  //QGLFormat format;
+  //format.setVersion(3,2);
+  //format.setProfile( QGLFormat::CoreProfile);
 
   m_gl = new NGLWidget(this);
 
