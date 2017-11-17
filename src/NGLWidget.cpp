@@ -103,7 +103,7 @@ void NGLWidget::initializeGL()
 
     //parser.toParse("prova.txt", tr);
     TreeData m_currentTree;
-    parser.toParse("prova2.txt",trparsed,tp);
+    parser.toParse("prova3.txt",trparsed,tp);
     LSysExtFactory::registerLSys("S0L",LSys0L::generate);
     LSys*S0L = LSysExtFactory::generateLSys("S0L",trparsed);
     //std::cout<<trparsed.Prules[1].pre_condition<<trparsed.Prules[1].post_condition<<'\n';
