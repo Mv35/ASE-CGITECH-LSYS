@@ -22,9 +22,9 @@
 
 
 
-NGLWidget::NGLWidget(const QGLFormat _format, QWidget *_parent) : QGLWidget( _format, _parent)
+NGLWidget::NGLWidget(QWidget *_parent) : QOpenGLWidget(_parent)
 {
-    setFocusPolicy(Qt::ClickFocus);
+    setFocus();
 
     this->resize(_parent->size());
 

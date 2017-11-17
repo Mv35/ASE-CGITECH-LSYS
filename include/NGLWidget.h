@@ -29,12 +29,12 @@
 ///@brief GLWidget class derived from qt's QGLWidget class
 ///
 ///
-class NGLWidget : public QGLWidget
+class NGLWidget : public QOpenGLWidget
 {
     Q_OBJECT
 public:
     //constructor and deconstructor
-    NGLWidget(const QGLFormat _format,QWidget *_parent);
+    NGLWidget(QWidget *_parent);
     ~NGLWidget();
 
 private:
