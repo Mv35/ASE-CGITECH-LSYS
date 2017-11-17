@@ -22,17 +22,14 @@
 
 
 
-NGLWidget::NGLWidget(const QGLFormat _format, QWidget *_parent) : QGLWidget( _format, _parent)
+NGLWidget::NGLWidget(QWidget *_parent) : QOpenGLWidget(_parent)
 {
-    setFocusPolicy(Qt::ClickFocus);
+    setFocus();
 
     this->resize(_parent->size());
 
     m_lstype = 0;
-    //m_exportLSysStruct = "";
-    //m_exportDevResults = "";
-    //m_spinXFace=0;
-    //m_spinYFace=0;
+
 
 }
 
@@ -45,7 +42,7 @@ void NGLWidget::initializeGL()
     glClearColor(0.8f,0.8f,0.8f,1.0f);
 
     glEnable((GL_DEPTH_TEST));
-    glEnable(GL_MULTISAMPLE);
+    //glEnable(GL_MULTISAMPLE);
 
     //m_currentDmode = GL_LINES;
 
@@ -58,6 +55,7 @@ void NGLWidget::initializeGL()
     m_camera->setShape(45,float(1024/720),0.0001,300);
 
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();
+    shader->setUniform("Colour",1.0f,1.0f,1.0f,1.0f);
 
     //m_light = new ngl::Light(ngl::Vec3(10,7,0),ngl::Colour(1,1,1,1),ngl::Colour(1,1,1,1),ngl::LightModes::DIRECTIONALLIGHT);
 
@@ -85,8 +83,7 @@ void NGLWidget::initializeGL()
 
     shader->linkProgramObject("ColourShader");
 
-    (*shader)["ColourShader"]->use();
-
+    (*shader)["nglColourShader"]->use();
 
 
     LSysStruct tr;
@@ -106,7 +103,7 @@ void NGLWidget::initializeGL()
 
     //parser.toParse("prova.txt", tr);
     TreeData m_currentTree;
-    parser.toParse("prova3.txt",trparsed,tp);
+    parser.toParse("prova2.txt",trparsed,tp);
     LSysExtFactory::registerLSys("S0L",LSys0L::generate);
     LSys*S0L = LSysExtFactory::generateLSys("S0L",trparsed);
     //std::cout<<trparsed.Prules[1].pre_condition<<trparsed.Prules[1].post_condition<<'\n';
@@ -138,6 +135,7 @@ void NGLWidget::initializeGL()
     //ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
     //prim->
 
+    update();
 }
 
 void NGLWidget::resizeGL(int _width, int _height)
@@ -172,6 +170,7 @@ void NGLWidget::loadMatricesToShader()
 void NGLWidget::paintGL()
 {
     glViewport(0,0,_w/2,_h/2);
+    glViewport(0,0,_w,_h);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     ngl::ShaderLib *shader=ngl::ShaderLib::instance();

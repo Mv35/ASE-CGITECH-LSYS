@@ -7,13 +7,15 @@
 #include <ngl/Light.h>
 #include <ngl/Text.h>
 #include <MatrixStack.h>
+#include <memory>
 
+#include <QOpenGLWidget>
 #include <QEvent>
 #include <QResizeEvent>
 #include <QGLWidget>
 #include <QKeyEvent>
 #include <QWheelEvent>
-#include <QOpenGLWidget>
+
 
 #include "LSysStruct.h"
 #include "LSysStructForFile.h"
@@ -29,13 +31,26 @@
 ///@brief GLWidget class derived from qt's QGLWidget class
 ///
 ///
-class NGLWidget : public QGLWidget
+class NGLWidget : public QOpenGLWidget
 {
     Q_OBJECT
 public:
     //constructor and deconstructor
-    NGLWidget(const QGLFormat _format,QWidget *_parent);
+    NGLWidget(QWidget *_parent);
     ~NGLWidget();
+protected:
+
+    void initializeGL();
+
+    void resizeGL(const int _w, const int _y);
+
+    void paintGL();
+
+    //std::unique_ptr<ngl::Camera> m_camera;
+    ngl::Camera * m_camera;
+    ngl::Transformation m_transformation;
+
+    MatrixStack m_mstack;
 
 private:
 
@@ -79,19 +94,6 @@ private:
 
     //ngl::Light* m_light;
     //std::unique_ptr<ngl::Light> m_light;
-protected:
-
-    void initializeGL() override;
-
-    void resizeGL(const int _w, const int _y) override;
-
-    void paintGL() override;
-
-    //std::unique_ptr<ngl::Camera> m_camera;
-    ngl::Camera * m_camera;
-    ngl::Transformation m_transformation;
-
-    MatrixStack m_mstack;
 
 
 

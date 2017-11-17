@@ -1,4 +1,4 @@
-#version 400 core
+#version 330 core
 
 // The Model View Projection Matrix
 uniform mat4 MVP;

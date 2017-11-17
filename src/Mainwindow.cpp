@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent), m_ui(new Ui::MainW
   format.setVersion(3,2);
   format.setProfile( QGLFormat::CoreProfile);
 
-  m_gl = new NGLWidget(format,this);
+  m_gl = new NGLWidget(this);
 
   // Creating the main render window
   m_ui->gridLayout->addWidget(m_gl,0,0,4,1);
