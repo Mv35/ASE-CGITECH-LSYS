@@ -11,7 +11,7 @@ ui_*
 # Executables
 *.exe
 *.out
-L-Sys
+L-Sys.dms
 # image files
 *.psd
 Makefile
