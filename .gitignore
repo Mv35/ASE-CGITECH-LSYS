@@ -1,0 +1,16 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+# qt files
+*.pro.user*
+.qmake*
+moc/
+moc_*
+ui_*
+# Executables
+*.exe
+*.out
+# image files
+*.psd
+Makefile
