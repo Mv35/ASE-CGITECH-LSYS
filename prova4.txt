@@ -8,12 +8,11 @@ iterations:
 3 ;
 
 scale:
-0.01 ;
+1 ;
 
 constants:
 ;
 
 Prules:
-F (0.5) F-F&F ;
-F (0.5) F+[+F]F^F ;
+F (1) F[~+F][~-F][~^F][~&F] ;
 

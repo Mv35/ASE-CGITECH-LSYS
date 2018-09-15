@@ -1,8 +1,10 @@
-#version 400 core
-/// @brief our output fragment colour
-layout (location =0) out vec4 fragColour;
+#version 330 core
+
 /// @brief[in] the vertex normal
 in vec3 fragmentNormal;
+/// @brief our output fragment colour
+out vec4 fragColour;
+
 /// @brief material structure
 struct Materials
 {
@@ -15,14 +17,11 @@ struct Materials
 // @brief light structure
 struct Lights
 {
-  vec4 position;
-  vec4 ambient;
-  vec4 diffuse;
-  vec4 specular;
-  float constantAttenuation;
-  float spotCosCutoff;
-  float quadraticAttenuation;
-  float linearAttenuation;
+    vec4 position;
+    vec3 direction;
+    vec4 ambient;
+    vec4 diffuse;
+    vec4 specular;
 };
 // @param material passed from our program
 uniform Materials material;
@@ -34,15 +33,14 @@ in vec3 halfVector;
 in vec3 eyeDirection;
 in vec3 vPosition;
 
-/// @brief a function to compute point light values
-/// @param[in] _light the number of the current light
+/// the colour of to use instead of material colour
+uniform vec4 Colour;
 
 vec4 pointLight()
 {
   vec3 N = normalize(fragmentNormal);
   vec3 halfV;
   float ndothv;
-  float attenuation;
   vec3 E = normalize(eyeDirection);
   vec3 L = normalize(lightDir);
   float lambertTerm = dot(N,L);
@@ -60,22 +58,19 @@ vec4 pointLight()
   // Compute distance between surface and light position
     d = length (VP);
 
-
-    diffuse+=material.diffuse*light.diffuse*lambertTerm;
+    diffuse+=Colour*light.diffuse*lambertTerm;
     ambient+=material.ambient*light.ambient;
     halfV = normalize(halfVector);
     ndothv = max(dot(N, halfV), 0.0);
     specular+=material.specular*light.specular*pow(ndothv, material.shininess);
   }
-    //return vec4(N*0.5+0.5,1.0);
-    return /*ambient + */diffuse/* + specular*/;
+return ambient + diffuse + specular;
 }
-
 
 
 void main ()
 {
 
-fragColour=pointLight();
+fragColour= pointLight();
 }
 

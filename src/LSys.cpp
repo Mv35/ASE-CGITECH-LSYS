@@ -27,18 +27,18 @@ void LSys::setPrules(const std::vector<ProductionRule> & _Prules)
     m_Prules= _Prules;
 }
 
-///@brief method to add production rule to class
-void LSys::addPrule(std::string pre, std::string key, std::string post, std::string def, float chance)
+
+void LSys::addPrule(std::string _pre, std::string _key, std::string _post, std::string _def, float _weight)
 {
     bool thereis_Prule = false;
 
     //add definition to existing production rule
     for(unsigned int i=0;i<m_Prules.size();++i)
     {
-        if((m_Prules[i].key == key) && (m_Prules[i].pre_condition == pre) && (m_Prules[i].post_condition == post))
+        if((m_Prules[i].m_key == _key) && (m_Prules[i].m_pre_condition == _pre) && (m_Prules[i].m_post_condition == _post))
         {
-            m_Prules[i].definitions[def]=chance;
-            m_Prules[i].definitions = definitionsNormalization(m_Prules[i].definitions);
+            m_Prules[i].m_definitions[_def]=_weight;
+            m_Prules[i].m_definitions = definitionsNormalization(m_Prules[i].m_definitions);
             thereis_Prule = true;
             break;
         }
@@ -47,29 +47,29 @@ void LSys::addPrule(std::string pre, std::string key, std::string post, std::str
     if( thereis_Prule==false)
     {
         ProductionRule Prule;
-        Prule.pre_condition = pre;
-        Prule.post_condition = post;
-        Prule.key = key;
-        Prule.definitions[def]= 1.0f;
+        Prule.m_pre_condition = _pre;
+        Prule.m_post_condition = _post;
+        Prule.m_key = _key;
+        Prule.m_definitions[_def]= 1.0f;
         m_Prules.push_back(Prule);
     }
 }
 
-///@brief method to set the sum of the float values of the map to 1
-/// in order to calculate percentage for each definitions
+
 std::unordered_map<std::string, float> LSys::definitionsNormalization(std::unordered_map<std::string, float> defins)
 {
 
     float sw=0.0f;
 
 
-
+    //go through deinitions and sum
 
     for(auto iter=defins.begin(); iter != defins.end(); ++iter)
     {
         sw += iter->second;
     }
 
+    //go through definitions and normalize
     for(auto iter=defins.begin(); iter != defins.end(); ++iter)
     {
 
@@ -79,31 +79,32 @@ std::unordered_map<std::string, float> LSys::definitionsNormalization(std::unord
 }
 
 
-///@brief method to remove PRules according to passed key
-void LSys::removePRuleonKey(std::string key)
+
+void LSys::removePRuleonKey(std::string m_key)
 {
+    //go through Prules and if key is matched delete rule
     for(unsigned int i=0; i< m_Prules.size();++i)
     {
-        if(m_Prules[i].key == key)
+        if(m_Prules[i].m_key == m_key)
         {
             m_Prules.erase((m_Prules.begin()+i));
         }
     }
 }
 
-///@brief method to remove Prule's definition according to key and def
-void LSys::rmPRuleDefinitiononKey(std::string key, std::string def)
+
+void LSys::rmPRuleDefinitiononKey(std::string m_key, std::string _def)
 {
 
     for(unsigned int i=0; i<m_Prules.size(); ++i)
     {
-        if(m_Prules[i].key==key)
+        if(m_Prules[i].m_key==m_key)
         {
-            for(auto iter=m_Prules[i].definitions.begin(); iter!=m_Prules[i].definitions.end();++iter)
+            for(auto iter=m_Prules[i].m_definitions.begin(); iter!=m_Prules[i].m_definitions.end();++iter)
             {
-                if(iter->first==def)
+                if(iter->first==_def)
                 {
-                    m_Prules[i].definitions.erase(iter);
+                    m_Prules[i].m_definitions.erase(iter);
                 }
 
             }
@@ -115,7 +116,7 @@ void LSys::rmPRuleDefinitiononKey(std::string key, std::string def)
 void LSys::print()
 {
 
-
+    //print parameters
 
     std::cout<<"L-Sys\n";
 
@@ -124,29 +125,32 @@ void LSys::print()
     std::cout<<"\nIterations\n"<<m_iterations<<'\n';
     std::cout<<"\nScale/drawLenght\n"<<m_scale<<'\n';
     std::cout<<"\nPrules:\n";
+
+
     for (unsigned int i=0; i<m_Prules.size();++i)
     {
-        //std::cout<<i<<"1for\n";
-        for(auto iter=m_Prules[i].definitions.begin(); iter!=m_Prules[i].definitions.end();++iter)
+
+        for(auto iter=m_Prules[i].m_definitions.begin(); iter!=m_Prules[i].m_definitions.end();++iter)
         {
-            //std::cout<<iter->first<<"2for\n";
-            if((m_Prules[i].pre_condition=="") && (m_Prules[i].post_condition==""))
+
+            //print Prules
+            if((m_Prules[i].m_pre_condition=="") && (m_Prules[i].m_post_condition==""))
             {
-                std::cout<<m_Prules[i].key<<'('<< iter->second <<")  ->  " << iter->first<<'\n';
+                std::cout<<m_Prules[i].m_key<<'('<< iter->second <<")  ->  " << iter->first<<'\n';
             }
-            else if((m_Prules[i].pre_condition!="") && (m_Prules[i].post_condition==""))
+            else if((m_Prules[i].m_pre_condition!="") && (m_Prules[i].m_post_condition==""))
             {
-                std::cout<<m_Prules[i].pre_condition<<'<' << m_Prules[i].key <<'(' << iter->second<< ") -> "<<iter->first<<'\n';
+                std::cout<<m_Prules[i].m_pre_condition<<'<' << m_Prules[i].m_key <<'(' << iter->second<< ") -> "<<iter->first<<'\n';
 
             }
-            else if((m_Prules[i].pre_condition=="")&&(m_Prules[i].post_condition!=""))
+            else if((m_Prules[i].m_pre_condition=="")&&(m_Prules[i].m_post_condition!=""))
             {
-                std::cout<< m_Prules[i].key <<""<< m_Prules[i].post_condition <<'(' << iter->second<<") -> "<<iter->first<<'\n';
+                std::cout<< m_Prules[i].m_key <<'>'<< m_Prules[i].m_post_condition <<'(' << iter->second<<") -> "<<iter->first<<'\n';
 
             }
-            else if((m_Prules[i].pre_condition!="")&&(m_Prules[i].post_condition!=""))
+            else if((m_Prules[i].m_pre_condition!="")&&(m_Prules[i].m_post_condition!=""))
             {
-                std::cout<<m_Prules[i].pre_condition<< '<' << m_Prules[i].key << '>' << m_Prules[i].post_condition << '('<< iter->second<<") ->"<<iter->first<<'\n';
+                std::cout<<m_Prules[i].m_pre_condition<< '<' << m_Prules[i].m_key << '>' << m_Prules[i].m_post_condition << '('<< iter->second<<") ->"<<iter->first<<'\n';
 
             }
         }
@@ -156,14 +160,14 @@ void LSys::print()
 }
 
 ///@brief method to print to file
-void LSys::Tofile(const char *file_name)
+void LSys::Tofile(const char *_file_name)
 {
 
     std::ofstream l_file;
 
-    std::cout<<"tofile chiamata\n";
+    //save parameters to file
 
-    l_file.open(file_name);
+    l_file.open(_file_name);
     std::cout<<"aperto:\n";
     l_file << "axiom:" <<'\n';
     l_file << m_axiom << " ;"<<'\n';
@@ -189,28 +193,28 @@ void LSys::Tofile(const char *file_name)
     }
     l_file << ";"<<'\n';
     l_file << '\n';
-
+    //saving Prules
     l_file <<"Prules:"<<'\n';
 
     for(unsigned int i=0; i< m_Prules.size(); ++i)
     {
-        for(auto iter=m_Prules[i].definitions.begin(); iter!=m_Prules[i].definitions.end(); ++iter)
+        for(auto iter=m_Prules[i].m_definitions.begin(); iter!=m_Prules[i].m_definitions.end(); ++iter)
         {
-            if((m_Prules[i].pre_condition=="") && (m_Prules[i].post_condition==""))
+            if((m_Prules[i].m_pre_condition=="") && (m_Prules[i].m_post_condition==""))
             {
-                l_file << m_Prules[i].key<<" ("<<iter->second<<") "<<iter->first<<" ;\n";
+                l_file << m_Prules[i].m_key<<" ("<<iter->second<<") "<<iter->first<<" ;\n";
             }
-            else if((m_Prules[i].pre_condition!="") && (m_Prules[i].post_condition==""))
+            else if((m_Prules[i].m_pre_condition!="") && (m_Prules[i].m_post_condition==""))
             {
-                l_file << m_Prules[i].pre_condition << "<" << m_Prules[i].key << " (" << iter->second << ") " << iter->first <<" ;\n";
+                l_file << m_Prules[i].m_pre_condition << "<" << m_Prules[i].m_key << " (" << iter->second << ") " << iter->first <<" ;\n";
             }
-            else if((m_Prules[i].pre_condition=="") && (m_Prules[i].post_condition!=""))
+            else if((m_Prules[i].m_pre_condition=="") && (m_Prules[i].m_post_condition!=""))
             {
-                l_file << m_Prules[i].key << ">" << m_Prules[i].post_condition << " (" << iter->second <<") " << iter->first<<" ;\n";
+                l_file << m_Prules[i].m_key << ">" << m_Prules[i].m_post_condition << " (" << iter->second <<") " << iter->first<<" ;\n";
             }
-            else if((m_Prules[i].pre_condition!="") && (m_Prules[i].post_condition!=""))
+            else if((m_Prules[i].m_pre_condition!="") && (m_Prules[i].m_post_condition!=""))
             {
-                l_file << m_Prules[i].pre_condition << "<" << m_Prules[i].key << ">" << m_Prules[i].post_condition << " (" << iter->second << ") " << iter->first <<" ;\n";
+                l_file << m_Prules[i].m_pre_condition << "<" << m_Prules[i].m_key << ">" << m_Prules[i].m_post_condition << " (" << iter->second << ") " << iter->first <<" ;\n";
 
             }
         }

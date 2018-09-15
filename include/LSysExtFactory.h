@@ -15,16 +15,19 @@
 class LSysExtFactory
 {
 public:
-    typedef LSys *(*createCallB)(const LSysStruct &p);
-
-    static void registerLSys(const std::string &type, createCallB cb);
-
-    static void unregisterLSys(const std::string &type);
-
-    static LSys *generateLSys(const std::string &type, const LSysStruct &pa);
-
+    //----------------------------------------------------------------------------------------------------------------------
+    typedef LSys *(*createCallB)(const LSysStruct &_p);
+    //----------------------------------------------------------------------------------------------------------------------
+    static void registerLSys(const std::string &_type, createCallB _cb);
+    //----------------------------------------------------------------------------------------------------------------------
+    static void unregisterLSys(const std::string &_type);
+    //----------------------------------------------------------------------------------------------------------------------
+    static LSys *generateLSys(const std::string &_type, const LSysStruct &_pa);
+    //----------------------------------------------------------------------------------------------------------------------
 private:
+    //----------------------------------------------------------------------------------------------------------------------
     static std::unordered_map<std::string, createCallB> m_lsystem;
+    //----------------------------------------------------------------------------------------------------------------------
 };
 
 

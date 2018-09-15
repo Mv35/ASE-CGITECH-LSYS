@@ -12,18 +12,21 @@
 #include "LSysStruct.h"
 #include "ProductionRule.h"
 
+//----------------------------------------------------------------------------------------------------------------------
+//constructor
 LSysParser::LSysParser(){}
 
-
-LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSysStructForFile &lsys_parameters)
+//----------------------------------------------------------------------------------------------------------------
+//method to parse LSystem parameters from a properly formatted text file
+LSysStruct LSysParser::toParse(const char* _file_name, LSysStruct &_o_result, LSysStructForFile &_lsys_parameters)
 {
 
-    o_result.axiom.clear();
-    o_result.angle=30.0f;
-    o_result.iteration=1;
-    o_result.drawLenght=1.0f;
-    o_result.Prules.clear();
-    o_result.constants.clear();
+    _o_result.m_axiom.clear();
+    _o_result.m_angle=30.0f;
+    _o_result.m_iteration=1;
+    _o_result.m_drawLenght=1.0f;
+    _o_result.m_Prules.clear();
+    _o_result.m_constants.clear();
 
     std::fstream my_file;
     std::string line;
@@ -31,9 +34,7 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
     char delimit = ' ';
     char end_of_line = ';';
     char chance_char ='(';
-    std::string arrow = "->";
-    //char pre_sym = '<';
-    //char post_sym = '>';
+
     std::string token;
     int num_set=0;
     int last_num_set;
@@ -46,7 +47,7 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
     float tmp_chance_f=1.0f;
     bool thereisPrule = false;
 
-    my_file.open(file_name);
+    my_file.open(_file_name);
 
     if(my_file.is_open())
     {
@@ -83,10 +84,10 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                 {
                     if((line!="axiom:") && (token[0]!=end_of_line))
                     {
-                        o_result.axiom+=token[0];
+                        _o_result.m_axiom+=token[0];
                         //std::cout<<o_result.axiom<<'\n';
                     }
-                    lsys_parameters.axiom=o_result.axiom;
+                    _lsys_parameters.m_axiom=_o_result.m_axiom;
 
                 }
                 break;
@@ -99,13 +100,13 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                       {
                         std::stringstream stringToFloat(token);
 
-                        if( !(stringToFloat >> o_result.angle))
+                        if( !(stringToFloat >> _o_result.m_angle))
                         {
-                            o_result.angle=30.0f;
+                            _o_result.m_angle=30.0f;
                         }
                       }
 
-                    lsys_parameters.angle=o_result.angle;
+                    _lsys_parameters.m_angle=_o_result.m_angle;
                 }
                 break;
             }
@@ -116,12 +117,12 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                      if((line!="iterations:") && (token[0]!=end_of_line) /*&& (token[0]!='0')*/)
                      {
                          std::stringstream stringToInt(token);
-                         if( !(stringToInt >> o_result.iteration) )
+                         if( !(stringToInt >> _o_result.m_iteration) )
                          {
-                             o_result.iteration =1;
+                             _o_result.m_iteration =1;
                          }
                      }
-                     lsys_parameters.iteration=o_result.iteration;
+                     _lsys_parameters.m_iteration=_o_result.m_iteration;
                  }
                  break;
             }
@@ -133,13 +134,13 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                     {
                         std::stringstream stringToFloat(token);
 
-                        if( !(stringToFloat >> o_result.drawLenght) )
+                        if( !(stringToFloat >> _o_result.m_drawLenght) )
                         {
-                            o_result.drawLenght=1.0f;
+                            _o_result.m_drawLenght=1.0f;
                         }
                     }
 
-                    lsys_parameters.drawLenght= o_result.drawLenght;
+                    _lsys_parameters.m_drawLenght= _o_result.m_drawLenght;
 
                 }
                 break;
@@ -151,8 +152,8 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
 
                     if((line!="constants:") &&(token[0]!=end_of_line))
                     {
-                        o_result.constants.push_back(token);
-                        lsys_parameters.constants.push_back(token);
+                        _o_result.m_constants.push_back(token);
+                        _lsys_parameters.m_constants.push_back(token);
                     }
                 }
                 break;
@@ -173,7 +174,7 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                     {
                         if(u_count==0)
                         {
-                            lsys_parameters.Prules.push_back(line);
+                            _lsys_parameters.m_Prules.push_back(line);
 
                         }
                         u_count++;
@@ -187,15 +188,17 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                                 for(unsigned int j=0;j<i;++j)
                                 {
                                     tmp_precondition+=token[j];
+                                    //std::cout<<"SONOQUiii"<<token<<'\n';
                                 }
                             }
 
                             if(token[i]=='>')
                             {
                                 post_idx=i;
-                                for(unsigned int k=0;k<token.size();++k)
+                                for(unsigned int k=i+1;k<token.size();++k)
                                 {
                                     tmp_postcondition+=token[k];
+                                    //std::cout<<"SONOQUA"<<token<<'\n';
                                 }
                             }
                         }
@@ -205,7 +208,7 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                             if((pre_idx==0 && post_idx==token.size()))
                             {
                                 tmp_key=token;
-                                std::cout<<"iltoken"<<token<<'\n';
+                                //std::cout<<"iltoken"<<token<<'\n';
 
                             }
                             else if((pre_idx!=0) && (post_idx==token.size()))
@@ -253,12 +256,12 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                 if(tmp_key!="")
                 {
 
-                    for(unsigned int i =0; i<o_result.Prules.size();++i)
+                    for(unsigned int i =0; i<_o_result.m_Prules.size();++i)
                     {
                         //use vector::at for the fact it checks against bounds, where PRules[i] would have not
-                        if( (o_result.Prules.at(i).key==tmp_key) && (o_result.Prules.at(i).pre_condition== tmp_precondition) && (o_result.Prules.at(i).post_condition==tmp_postcondition))
+                        if( (_o_result.m_Prules.at(i).m_key==tmp_key) && (_o_result.m_Prules.at(i).m_pre_condition== tmp_precondition) && (_o_result.m_Prules.at(i).m_post_condition==tmp_postcondition))
                         {
-                            o_result.Prules[i].definitions[tmp_defins]= tmp_chance_f;
+                            _o_result.m_Prules[i].m_definitions[tmp_defins]= tmp_chance_f;
                             //std::cout<<tmp_defins<<"defins2"<<'\n';
                             thereisPrule =true;
 
@@ -266,11 +269,11 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
                     }
                     if(!thereisPrule)
                     {
-                        p.key=tmp_key;
-                        p.definitions[tmp_defins]= tmp_chance_f;
-                        p.pre_condition=tmp_precondition;
-                        p.post_condition=tmp_postcondition;
-                        o_result.Prules.push_back(p);
+                        p.m_key=tmp_key;
+                        p.m_definitions[tmp_defins]= tmp_chance_f;
+                        p.m_pre_condition=tmp_precondition;
+                        p.m_post_condition=tmp_postcondition;
+                        _o_result.m_Prules.push_back(p);
                         //std::reverse(o_result.Prules.begin(),o_result.Prules.end());
                         //std::cout<<p.key<<'\n'<<tmp_defins<<'\n';
                     }
@@ -295,21 +298,23 @@ LSysStruct LSysParser::toParse(const char* file_name, LSysStruct &o_result, LSys
     }
     my_file.close();
 
-    for(unsigned i=0;i<o_result.Prules.size();++i)
+    for(unsigned i=0;i<_o_result.m_Prules.size();++i)
     {
-        int Prules_counter = o_result.Prules[i].definitions.size();
+        int Prules_counter = _o_result.m_Prules[i].m_definitions.size();
 
         if(Prules_counter>1)
         {
-            o_result.Prules[i].definitions= definitionsNormalization(o_result.Prules[i].definitions);
+            _o_result.m_Prules[i].m_definitions= definitionsNormalization(_o_result.m_Prules[i].m_definitions);
         }
     }
 
     //o_result.LSysType= getLSysType(o_result.Prules);
 
-    return o_result;
+    return _o_result;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+//method to normalize the definitions weights (sum = 1.0f always)
 std::unordered_map<std::string, float> LSysParser::definitionsNormalization(std::unordered_map<std::string ,float> &defins)
 {
     float sw=0.0f;
@@ -326,30 +331,4 @@ std::unordered_map<std::string, float> LSysParser::definitionsNormalization(std:
     return defins;
 }
 
-/*int LSysParser::getLSysType(std::vector<ProductionRule> &Prules)
-{
-    int current_ltype=0;
-
-    for(unsigned i=0; i<Prules.size();++i)
-    {
-        if(Prules[i].definitions.size()>1)
-        {
-            if((current_ltype==0) || (current_ltype==3))
-            {
-                current_ltype+=1;
-            }
-
-            if((Prules[i].pre_condition!="") || (Prules[i].post_condition !=""))
-            {
-                if(current_ltype<3)
-                {
-                    current_ltype+=3;
-                }
-            }
-
-        }
-    }
-    return (lsystype)current_ltype;
-}
-
-*/
+//----------------------------------------------------------------------------------------------------------------------

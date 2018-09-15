@@ -6,35 +6,37 @@
 #include "LSysStructForFile.h"
 
 ///@file LSysParser.h
-/// @brief The text file parser used to obtain an l-system structure with the values passed from the file
-/// class that will parse an accordingly formatted text file and
+/// @brief class that will parse an accordingly formatted text file and
 /// store the values in both a LSysStruct and LSysStructForFile
-///Modified from : Robert J Yager "Reading, Writing and Parsing text files in C++"
-/// [Accessed June 2017] Available from: www.dtic.mil/get-tr-doc/pdf?AD=ADA611850
-//enum lsystype{D0L=0,S0L=1};
+
 class LSysParser
 {
 public:
-
-    ///constructor
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief constructor
     LSysParser();
-    ///@brief method that parses a specified file and stores the according values into an LSysStruct and a
-    /// LSysStructForFile data structure
-    LSysStruct toParse(const char* file_name, LSysStruct &o_result, LSysStructForFile &lsys_parameters);
-    //LSysStruct toParse(const char* file_name, LSysStruct &o_result);
-
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief method that parses a specified file and stores the according values into an LSysStruct and a LSysStructForFile data structure
+    /// @param _file_name the name of the file
+    /// @param _o_result LSysStruct to store the resulting LSystem parameters
+    /// @param _lsys_parameters LSysStructForFile to store the resulting LSystem parameters for file output and UI
+    //----------------------------------------------------------------------------------------------------------------------
+    LSysStruct toParse(const char* _file_name, LSysStruct &_o_result, LSysStructForFile &_lsys_parameters);
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to get the input file
+    //----------------------------------------------------------------------------------------------------------------------
     std::string getInputFile();
-
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method that iterates through an unordered_map of definitions and performs calculations so that
     /// the sum of the float values of the map are always 1.
-    std::unordered_map<std::string, float> definitionsNormalization(std::unordered_map<std::string ,float> &defins);
-
-    ///@brief method to get LSysType according to the l-system that has been parsed
-    //int getLSysType(std::vector<ProductionRule> &Prules);
+    /// @param _defins unordered map of definition strings and respective float weight value
+    //----------------------------------------------------------------------------------------------------------------------
+    std::unordered_map<std::string, float> definitionsNormalization(std::unordered_map<std::string ,float> &_defins);
 
 private:
-
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief input file
+    //----------------------------------------------------------------------------------------------------------------------
     std::string m_inputfile;
 };
 

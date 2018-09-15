@@ -5,15 +5,13 @@ angle:
 30;
 
 iterations:
-3;
+2;
 
 scale:
-0.01;
+1.0;
 
 constants:
 ;
 
 Prules:
-F F+[+F]F^F ;
-F F-F&F ;
-
+F F ;

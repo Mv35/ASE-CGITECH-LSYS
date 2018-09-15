@@ -2,10 +2,10 @@ axiom:
 F;
 
 angle:
-45;
+30;
 
 iterations:
-2;
+3;
 
 scale:
 1.0;
@@ -14,5 +14,6 @@ constants:
 ;
 
 Prules:
-F (0.7) F+F[-F]+F ;
-F (0.3) F-F ;
+F F[~+F][~-F][~&F][~^F] ;
+
+

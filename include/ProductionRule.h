@@ -10,20 +10,25 @@
 
 struct ProductionRule
 {
+ //----------------------------------------------------------------------------------------------------------------------
  ///@brief post condition of the key
  /// for context sensitive L-systems  A<B a before b
- std::string post_condition;
-
+ //----------------------------------------------------------------------------------------------------------------------
+ std::string m_post_condition;
+ //----------------------------------------------------------------------------------------------------------------------
  ///@brief pre condition of the key B>A a after b
  /// for context sensitive L-systems
- std::string pre_condition;
-
+ //----------------------------------------------------------------------------------------------------------------------
+ std::string m_pre_condition;
+ //----------------------------------------------------------------------------------------------------------------------
  ///@brief the current evaluated character also known as key
- std::string key;
-
+ //----------------------------------------------------------------------------------------------------------------------
+ std::string m_key;
+ //----------------------------------------------------------------------------------------------------------------------
  ///@brief definitions for the key and both conditions.
  /// if conditions exist a non-deterministic system must be implemented
- std::unordered_map<std::string, float> definitions;
+ //----------------------------------------------------------------------------------------------------------------------
+ std::unordered_map<std::string, float> m_definitions;
 
 };
 

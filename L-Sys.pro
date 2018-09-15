@@ -30,7 +30,11 @@ HEADERS += include/LSys.h include/LSysExtFactory.h include/LSysStruct.h include/
     include/TurtleBranch.h \
     include/NGLWidget.h \
     include/MainWindow.h \
-    include/MatrixStack.h
+    include/MatrixStack.h \
+    include/WindowParams.h \
+    include/LSys1L.h \
+    include/LSys2L.h \
+    include/ObjectExporter.h
 
 SOURCES += src/LSys.cpp src/LSysExtFactory.cpp src/main.cpp \
     src/LSys0L.cpp \
@@ -38,12 +42,16 @@ SOURCES += src/LSys.cpp src/LSysExtFactory.cpp src/main.cpp \
     src/Turtle.cpp \
     src/NGLWidget.cpp \
     src/MainWindow.cpp \
-    src/MatrixStack.cpp
+    src/MatrixStack.cpp \
+    src/NGLSceneMouseControls.cpp \
+    src/LSys1L.cpp \
+    src/LSys2L.cpp \
+    src/ObjectExporter.cpp
 
 
-OTHER_FILES+= shaders/ColourFragment.glsl \
-              shaders/ColourVertex.glsl
-
+OTHER_FILES+= \
+              shaders/PhongFragment.glsl \
+              shaders/PhongVertex.glsl
 FORMS += ui/MainWindow.ui \
 
 
@@ -60,5 +68,9 @@ else{ # note brace must be here
         message("Using custom NGL location")
         include($(NGLDIR)/UseNGL.pri)
 }
+
+DISTFILES += \
+    shaders/PhongFragment.glsl \
+    shaders/PhongVertex.glsl
 
 

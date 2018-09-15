@@ -11,29 +11,37 @@
 
 ///@file LSys.h
 ///@brief L-system abstract class
-///to be inherited by the rest of L-systems only 0L at the moment
+///to be inherited by LSys0L
 /// it holds no direct constructor and holds a pure virtual abstract method "develop"
-///  which will be inherited by the sub L-System classes.
+///  which will be inherited and implemented in the sub L-System classes.
 
 class LSys
 {
 protected:
-    ///@brief axiom
+    //----------------------------------------------------------------------------------------------------------------------
+    /// @brief m_axiom
+    //----------------------------------------------------------------------------------------------------------------------
     std::string m_axiom;
 
-
+    //----------------------------------------------------------------------------------------------------------------------
+    /// @brief m_angle
+    //----------------------------------------------------------------------------------------------------------------------
     int m_angle;
-
-    ///@brief iterations
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief m_iterations
+    //----------------------------------------------------------------------------------------------------------------------
     int m_iterations;
-
-    ///@brief scale
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief m_scale
+    //----------------------------------------------------------------------------------------------------------------------
     double m_scale;
-
-    ///@brief vector of constants
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief vector of m_constants
+    //----------------------------------------------------------------------------------------------------------------------
     std::vector<std::string> m_constants;
-
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief Production rules vector
+    /// //----------------------------------------------------------------------------------------------------------------------
     std::vector<ProductionRule> m_Prules;
 
 
@@ -41,32 +49,62 @@ public:
     virtual ~LSys(){}
 
     /// Accessors methods
-
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief axiom accessor method
+    //----------------------------------------------------------------------------------------------------------------------
     std::string getAxiom() const;
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief PRules accessor method
+    //----------------------------------------------------------------------------------------------------------------------
     std::vector<ProductionRule> getPrules() const;
 
     /// Mutators methods
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief axiom mutator method
+    //----------------------------------------------------------------------------------------------------------------------
     void setAxiom(const std::string &);
+    /// Mutators methods
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief Prules mutator method
+    //----------------------------------------------------------------------------------------------------------------------
     void setPrules(const std::vector<ProductionRule> &);
-
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method add Production rule to the class
-    void addPrule(std::string pre, std::string key, std::string post, std::string def, float weight);
-
+    //----------------------------------------------------------------------------------------------------------------------
+    void addPrule(std::string _pre, std::string _key, std::string _post, std::string _def, float _weight);
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to normalize the definitions float values so that their sum is = to 1
-    std::unordered_map<std::string, float> definitionsNormalization(std::unordered_map<std::string, float> def);
-
+    /// @param def unordered_map of strings and respective weights
+    //----------------------------------------------------------------------------------------------------------------------
+    std::unordered_map<std::string, float> definitionsNormalization(std::unordered_map<std::string, float> _def);
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to remove a Prule from passed key
-    void removePRuleonKey(std::string key);
+    /// @param key the string holding the key character of the rule
+    //----------------------------------------------------------------------------------------------------------------------
+    void removePRuleonKey(std::string _key);
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to remove a definition
-    void rmPRuleDefinitiononKey(std::string key, std::string def);
+    /// @param key the string holding the key character of the rule
+    /// @param def the string holding the definition
+    //----------------------------------------------------------------------------------------------------------------------
+    void rmPRuleDefinitiononKey(std::string _key, std::string _def);
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to print the values of the class's members
+    //----------------------------------------------------------------------------------------------------------------------
     void print();
+    //----------------------------------------------------------------------------------------------------------------------
     ///@brief method to print to file the values of the class's members
-    void Tofile(const char* file_name);
+    /// @param file_name the name of the file
+    //----------------------------------------------------------------------------------------------------------------------
+    void Tofile(const char* _file_name);
 
-
-    /// Pure Virtual Method to be inherited from L-sys classes
-    virtual std::vector<std::string> develop (int iterations, std::vector<std::string>& out_results, bool all_stages) = 0;
+    //----------------------------------------------------------------------------------------------------------------------
+    ///@brief Pure Virtual Method to be inherited from L-sys classes
+    /// @param iterations number of iterations to perform
+    /// @param out_results vector of strings to contain the L-System's results
+    /// @param flag to indicate that all iterations must be developed and stored
+    //----------------------------------------------------------------------------------------------------------------------
+    virtual std::vector<std::string> develop (int _iterations, std::vector<std::string>& _out_results, bool _all_stages) = 0;
 
 };
 
